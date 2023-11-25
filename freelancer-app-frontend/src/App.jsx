@@ -1,5 +1,11 @@
+import { Routes, Route } from "react-router-dom";
+import Auth from "./pages/Auth";
 function App() {
-  return <div className="bg-primary-200 bg-opacity-10">نکست</div>;
+  return (
+    <Routes>
+      <Route path="/auth" element={<Auth />} />
+    </Routes>
+  );
 }
 
 export default App;
