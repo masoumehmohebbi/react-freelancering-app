@@ -1,13 +1,7 @@
 import TextField from "../../ui/TextField";
 import Loading from "../../ui/Loading";
 
-const SendOTPForm = ({
-  isSendingOtp,
-  onSubmit,
-  setStep,
-  phoneNumber,
-  onChange,
-}) => {
+const SendOTPForm = ({ isSendingOtp, onSubmit, phoneNumber, onChange }) => {
   return (
     <div>
       <form className="space-y-8" onSubmit={onSubmit}>
