@@ -1,5 +1,11 @@
+import ProjectTable from "../features/projects/ProjectTable";
+
 const Projects = () => {
-  return <div>Projects</div>;
+  return (
+    <div>
+      <ProjectTable />
+    </div>
+  );
 };
 
 export default Projects;
