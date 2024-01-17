@@ -7,10 +7,12 @@ import { HiOulineTrash } from "react-icons/hi";
 import { TbPencilMinus } from "react-icons/tb";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import useRemoveProject from "./useRemoveProject";
 
 const ProjectRow = ({ project, index }) => {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const { isDeleting, removeProject } = useRemoveProject();
 
   return (
     <Table.Row key={project._id}>
@@ -62,7 +64,13 @@ const ProjectRow = ({ project, index }) => {
               <ConfirmDelete
                 resourseName={project.title}
                 disabled={false}
-                onConfirm={() => {}}
+                onConfirm={() => {
+                  removeProject(project._id, {
+                    onSuccess: () => {
+                      setIsDeleteOpen(false);
+                    },
+                  });
+                }}
                 onClose={() => setIsDeleteOpen(false)}
               />
             </Modal>
