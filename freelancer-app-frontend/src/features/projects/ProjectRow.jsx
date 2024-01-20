@@ -3,7 +3,7 @@ import Table from "../../ui/Table";
 import truncateText from "../../utils/TruncateText";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
-import { HiOulineTrash } from "react-icons/hi";
+import { HiOutlineTrash } from "react-icons/hi";
 import { TbPencilMinus } from "react-icons/tb";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
@@ -54,7 +54,7 @@ const ProjectRow = ({ project, index }) => {
           </>
           <>
             <button onClick={() => setIsDeleteOpen(true)}>
-              <HiOulineTrash className="w-5 h-5 text-error" />
+              <HiOutlineTrash className="w-5 h-5 text-error" />
             </button>
             <Modal
               title={`حذف ${project.title}`}
