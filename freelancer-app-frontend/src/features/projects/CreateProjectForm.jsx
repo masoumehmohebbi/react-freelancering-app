@@ -8,7 +8,6 @@ import useCategories from "../../hooks/useCategories";
 import useCreateProject from "./useCreateProject";
 import Loading from "../../ui/Loading";
 
-
 const CreateProjectForm = ({ onClose }) => {
   const { categories } = useCategories();
   const [tags, setTags] = useState([]);
