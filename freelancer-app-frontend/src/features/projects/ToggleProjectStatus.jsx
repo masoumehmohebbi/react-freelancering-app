@@ -5,10 +5,6 @@ import Toggle from "../../ui/Toggle";
 const ToggleProjectStatus = ({ project }) => {
   const { status } = project;
 
-  //   const [enabled, setEnabled] = useState(
-  //     project.status === "OPEN" ? true : false
-  //   );
-
   const { isUpdating, ToggleProjectStatus } = useToggleProjectStatus();
 
   const toggleHandler = () => {
