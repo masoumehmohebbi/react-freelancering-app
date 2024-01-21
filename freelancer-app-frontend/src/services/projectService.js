@@ -11,3 +11,9 @@ export function removeProjectsApi(id) {
 export function createProjectApi(data) {
   return http.get(`/project/add`, data).then(({ data }) => data.data);
 }
+
+export function editProjectApi({ id, newProject }) {
+  return http
+    .get(`/project/update/${id}`, newProject)
+    .then(({ data }) => data.data);
+}
