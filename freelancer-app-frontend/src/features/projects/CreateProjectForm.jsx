@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import TextField from "../../ui/TextField";
-import RHFSelect from "../../ui/RHFselect";
+import RHFSelect from "./../../ui/RHFSelect";
 import { useState } from "react";
 import { TagsInput } from "react-tag-input-component";
 import DatePickerField from "../../ui/DatePickerField";
