@@ -1,3 +1,5 @@
+import { toPersianNumbers } from "../utils/toPersianNumbers";
+
 const colors = {
   primary: "bg-primary-100 text-primary-700",
   yellow: "bg-yellow-100 text-yellow-700",
@@ -15,7 +17,9 @@ function Stat({ title, icon, value, color }) {
       <h5 className="font-bold text-secondary-500 text-lg self-center">
         {title}
       </h5>
-      <p className="text-3xl font-bold text-secondary-900">{value}</p>
+      <p className="text-3xl font-bold text-secondary-900">
+        {toPersianNumbers(value)}
+      </p>
     </div>
   );
 }
