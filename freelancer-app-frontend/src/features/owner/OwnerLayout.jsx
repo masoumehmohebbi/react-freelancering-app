@@ -7,12 +7,12 @@ const OwnerLayout = () => {
   return (
     <AppLayout>
       <Sidebar>
-        <CustomNavLink to="/owner/dashboard">
+        <CustomNavLink to="dashboard">
           <HiHome />
           داشبورد
         </CustomNavLink>
 
-        <CustomNavLink to="/owner/projects">
+        <CustomNavLink to="projects">
           <HiCollection />
           پروژه ها
         </CustomNavLink>
