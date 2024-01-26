@@ -3,7 +3,7 @@ const Select = ({ options, value, onChange }) => {
     <select
       value={value}
       onChange={onChange}
-      className="textField__input p-2 text-xs"
+      className="textField__input p-2 text-xs bg-secondary-0"
     >
       {options.map((item) => (
         <option value={item.value} key={item.value}>
