@@ -13,7 +13,7 @@ import OwnerLayout from "./features/owner/OwnerLayout";
 import FreelancerDashboard from "./pages/FreelancerDashboard";
 import Proposals from "./pages/Proposals";
 import SubmittedProjects from "./pages/SubmittedProjects";
-import FreelancerLayout from "./features/freelnacer/FreelancerLayout";
+import FreelancerLayout from "./features/freelancer/FreelancerLayout";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import AdminLayout from "./features/admin/AdminLayout";

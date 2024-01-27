@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SendOTPForm from "./SendOTPForm";
 import CheckOTPForm from "./CheckOTPForm";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { getOtp } from "../../services/authService";
 import { useForm } from "react-hook-form";
+import useUser from "./useUser";
+import { useNavigate } from "react-router-dom";
 
 const AuthContainer = () => {
+  const [step, setStep] = useState(2);
+  const { register, handleSubmit, getValues } = useForm();
+  const { user } = useUser();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) navigate("/", { replace: true });
+  }, [user, navigate]);
   const {
     isPending: isSendingOtp,
     data: otpResponse,
@@ -24,10 +34,6 @@ const AuthContainer = () => {
       toast.error(error?.response?.data?.message);
     }
   };
-
-  const [step, setStep] = useState(2);
-
-  const { register, handleSubmit, getValues } = useForm();
 
   const renderStep = () => {
     switch (step) {
