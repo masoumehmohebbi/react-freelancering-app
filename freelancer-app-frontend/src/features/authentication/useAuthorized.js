@@ -9,6 +9,9 @@ const useAuthorized = () => {
   let isAuthenticate = false;
   if (user) isAuthenticate = true;
 
+  let isVerified = false;
+  if (user && Number(user.status) === 2) isVerified = true;
+
   const ROLES = {
     admin: "ADMIN",
     owner: "OWNER",
@@ -20,7 +23,7 @@ const useAuthorized = () => {
     if (user && user.role === ROLES[desiredRole]) isAuthorized = true;
   }
 
-  return { isLoading, user, isAuthenticate, isAuthorized };
+  return { isLoading, user, isAuthenticate, isAuthorized, isVerified };
 };
 
 export default useAuthorized;
