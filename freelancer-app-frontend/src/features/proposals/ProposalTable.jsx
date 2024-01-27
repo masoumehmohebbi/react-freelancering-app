@@ -4,8 +4,9 @@ import Table from "../../ui/Table";
 import ProposalRow from "./ProposalRow";
 import useProposals from "./useProposals";
 
-const ProposalTable = () => {
+function ProposalTable() {
   const { isLoading, proposals } = useProposals();
+
   if (isLoading) return <Loading />;
 
   if (!proposals.length) return <Empty resourceName="پروپوزال" />;
@@ -21,11 +22,10 @@ const ProposalTable = () => {
       </Table.Header>
       <Table.Body>
         {proposals.map((proposal, index) => (
-          <ProposalRow key={proposal._id} project={proposal} index={index} />
+          <ProposalRow key={proposal._id} proposal={proposal} index={index} />
         ))}
       </Table.Body>
     </Table>
   );
-};
-
+}
 export default ProposalTable;

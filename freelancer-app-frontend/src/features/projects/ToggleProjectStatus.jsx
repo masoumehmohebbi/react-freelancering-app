@@ -1,30 +1,33 @@
-import useToggleProjectStatus from "./useProjectToggleStatus";
+import { Switch } from "@headlessui/react";
+import { useState } from "react";
+import useToggleProjectStatus from "./useToggleprojectStatus";
 import Loading from "../../ui/Loading";
 import Toggle from "../../ui/Toggle";
 
-const ToggleProjectStatus = ({ project }) => {
+function ToggleProjectStatus({ project }) {
   const { status } = project;
-
-  const { isUpdating, ToggleProjectStatus } = useToggleProjectStatus();
+  const { isUpdating, toggleProjectStatus } = useToggleProjectStatus();
 
   const toggleHandler = () => {
-    const newStatus = project.status === "OPEN" ? "CLOSE" : "OPEN";
-
-    ToggleProjectStatus({ id: project._id, data: { status: newStatus } });
+    const newStatus = status === "OPEN" ? "CLOSED" : "OPEN";
+    toggleProjectStatus({
+      id: project._id,
+      data: { status: newStatus },
+    });
   };
+
   return (
     <div className="w-[5rem]">
       {isUpdating ? (
-        <Loading width={50} height={20} />
+        <Loading height={20} width={50} />
       ) : (
         <Toggle
           enabled={status === "OPEN" ? true : false}
-          label={project.status === "OPEN" ? "باز" : "بسته"}
+          label={status === "OPEN" ? "باز" : "بسته"}
           onChange={toggleHandler}
         />
       )}
     </div>
   );
-};
-
+}
 export default ToggleProjectStatus;

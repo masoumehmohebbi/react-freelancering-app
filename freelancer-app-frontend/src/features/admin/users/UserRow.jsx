@@ -1,14 +1,7 @@
 import { useState } from "react";
-import Table from "../../ui/Table";
-import truncateText from "../../utils/truncateText";
-import Modal from "../../ui/Modal";
-import ChangeProposalStatus from "./ChangeProposalStatus";
-import {
-  toPersianNumbers,
-  toPersianNumbersWithComma,
-} from "../../utils/toPersianNumbers";
-
-// 0, 1, 2
+import Modal from "../../../ui/Modal";
+import Table from "../../../ui/Table";
+import ChangeUserStatus from "./ChangeUserStatus";
 
 const statusStyle = [
   {
@@ -25,18 +18,17 @@ const statusStyle = [
   },
 ];
 
-function ProposalRow({ proposal, index }) {
-  const { status, user } = proposal;
+function UserRow({ user, index }) {
   const [open, setOpen] = useState(false);
+  const { status } = user;
+
   return (
     <Table.Row>
       <td>{index + 1}</td>
       <td>{user.name}</td>
-      <td>
-        <p>{truncateText(proposal.description, 50)}</p>
-      </td>
-      <td>{toPersianNumbers(proposal.duration)} روز</td>
-      <td>{toPersianNumbersWithComma(proposal.price)}</td>
+      <td>{user.email}</td>
+      <td>{user.phoneNumber}</td>
+      <td>{user.role}</td>
       <td>
         <span className={`badge ${statusStyle[status].className}`}>
           {statusStyle[status].label}
@@ -44,12 +36,12 @@ function ProposalRow({ proposal, index }) {
       </td>
       <td>
         <Modal
-          title="تغییر وضعیت درخواست"
+          title="تغییر وضعیت کاربر"
           open={open}
           onClose={() => setOpen(false)}
         >
-          <ChangeProposalStatus
-            proposalId={proposal._id}
+          <ChangeUserStatus
+            userId={user._id}
             onClose={() => setOpen(false)}
           />
         </Modal>
@@ -58,4 +50,5 @@ function ProposalRow({ proposal, index }) {
     </Table.Row>
   );
 }
-export default ProposalRow;
+export default UserRow;
+

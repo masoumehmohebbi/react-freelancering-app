@@ -1,15 +1,15 @@
-import { useForm } from "react-hook-form";
-import TextField from "../../ui/TextField";
-import RHFSelect from "./../../ui/RHFSelect";
-import { useState } from "react";
 import { TagsInput } from "react-tag-input-component";
+import RHFSelect from "../../ui/RHFSelect";
+import TextField from "../../ui/TextField";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 import DatePickerField from "../../ui/DatePickerField";
 import useCategories from "../../hooks/useCategories";
 import useCreateProject from "./useCreateProject";
 import Loading from "../../ui/Loading";
 import useEditProject from "./useEditProject";
 
-const CreateProjectForm = ({ onClose, projectToEdit = {} }) => {
+function CreateProjectForm({ onClose, projectToEdit = {} }) {
   const { _id: editId } = projectToEdit;
   const isEditSession = Boolean(editId);
 
@@ -21,11 +21,16 @@ const CreateProjectForm = ({ onClose, projectToEdit = {} }) => {
     deadline,
     tags: prevTags,
   } = projectToEdit;
-
   let editValues = {};
   if (isEditSession) {
-    editValues = { title, description, budget, category: category._id };
+    editValues = {
+      title,
+      description,
+      budget,
+      category: category._id,
+    };
   }
+
   const {
     register,
     formState: { errors },
@@ -37,7 +42,7 @@ const CreateProjectForm = ({ onClose, projectToEdit = {} }) => {
   const [date, setDate] = useState(new Date(deadline || ""));
   const { categories } = useCategories();
   const { isCreating, createProject } = useCreateProject();
-  const { isEditing, editProject } = useEditProject();
+  const { editProject, isEditing } = useEditProject();
 
   const onSubmit = (data) => {
     const newProject = {
@@ -45,12 +50,14 @@ const CreateProjectForm = ({ onClose, projectToEdit = {} }) => {
       deadline: new Date(date).toISOString(),
       tags,
     };
+
     if (isEditSession) {
       editProject(
         { id: editId, newProject },
         {
           onSuccess: () => {
-            onclose(reset());
+            onClose();
+            reset();
           },
         }
       );
@@ -63,17 +70,19 @@ const CreateProjectForm = ({ onClose, projectToEdit = {} }) => {
       });
     }
   };
+
   return (
     <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
       <TextField
-        label="عنوان پروژه"
+        label="عنوان"
+        name="title"
         register={register}
         required
         validationSchema={{
           required: "عنوان ضروری است",
-          minLengthL: {
+          minLength: {
             value: 10,
-            message: "طول عنوان نامعتبر است",
+            message: "حداقل 10 کاراکتر را وارد کنید",
           },
         }}
         errors={errors}
@@ -104,9 +113,9 @@ const CreateProjectForm = ({ onClose, projectToEdit = {} }) => {
         errors={errors}
       />
       <RHFSelect
+        label="دسته بندی"
         required
         name="category"
-        label="دسته بندی"
         register={register}
         options={categories}
       />
@@ -115,7 +124,6 @@ const CreateProjectForm = ({ onClose, projectToEdit = {} }) => {
         <TagsInput value={tags} onChange={setTags} name="tags" />
       </div>
       <DatePickerField date={date} setDate={setDate} label="ددلاین" />
-
       <div className="!mt-8">
         {isCreating || isEditing ? (
           <Loading />
@@ -127,6 +135,5 @@ const CreateProjectForm = ({ onClose, projectToEdit = {} }) => {
       </div>
     </form>
   );
-};
-
+}
 export default CreateProjectForm;

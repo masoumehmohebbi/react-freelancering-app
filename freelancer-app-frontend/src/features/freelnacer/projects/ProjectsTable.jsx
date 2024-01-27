@@ -1,11 +1,11 @@
-import useOwnerProjects from "./useOwnerProjects";
-import Loading from "../../ui/Loading";
-import Empty from "../../ui/Empty";
-import Table from "../../ui/Table";
+import useProjects from "../../../hooks/useProjects";
+import Empty from "../../../ui/Empty";
+import Loading from "../../../ui/Loading";
+import Table from "../../../ui/Table";
 import ProjectRow from "./ProjectRow";
 
-function ProjectTable() {
-  const { isLoading, projects } = useOwnerProjects();
+function ProjectsTable() {
+  const { isLoading, projects } = useProjects();
 
   if (isLoading) return <Loading />;
 
@@ -16,14 +16,10 @@ function ProjectTable() {
       <Table.Header>
         <th>#</th>
         <th>عنوان پروژه</th>
-        <th>دسته بندی</th>
         <th>بودجه</th>
         <th>ددلاین</th>
-        <th>تگ ها</th>
-        <th>فریلنسر</th>
         <th>وضعیت</th>
         <th>عملیات</th>
-        <th>درخواست ها</th>
       </Table.Header>
       <Table.Body>
         {projects.map((project, index) => (
@@ -33,4 +29,4 @@ function ProjectTable() {
     </Table>
   );
 }
-export default ProjectTable;
+export default ProjectsTable;

@@ -1,10 +1,10 @@
 import TextField from "../../ui/TextField";
 import Loading from "../../ui/Loading";
 
-const SendOTPForm = ({ isSendingOtp, onSubmit, register }) => {
+function SendOTPForm({ onSubmit, isSendingOtp, register }) {
   return (
     <div>
-      <form className="space-y-8" onSubmit={onSubmit}>
+      <form className="space-y-10" onSubmit={onSubmit}>
         <TextField
           label="شماره موبایل"
           name="phoneNumber"
@@ -22,6 +22,5 @@ const SendOTPForm = ({ isSendingOtp, onSubmit, register }) => {
       </form>
     </div>
   );
-};
-
+}
 export default SendOTPForm;

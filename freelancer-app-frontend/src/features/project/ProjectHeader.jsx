@@ -1,8 +1,8 @@
 import { HiArrowRight } from "react-icons/hi";
 import useMoveBack from "../../hooks/useMoveBack";
-const ProjectHeader = ({ project }) => {
-  const moveBack = useMoveBack();
 
+function ProjectHeader({ project }) {
+  const moveBack = useMoveBack();
   return (
     <div className="flex items-center gap-x-4 mb-8">
       <button onClick={moveBack}>
@@ -13,6 +13,5 @@ const ProjectHeader = ({ project }) => {
       </h1>
     </div>
   );
-};
-
+}
 export default ProjectHeader;

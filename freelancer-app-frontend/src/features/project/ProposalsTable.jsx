@@ -2,8 +2,9 @@ import Empty from "../../ui/Empty";
 import Table from "../../ui/Table";
 import ProposalRow from "./ProposalRow";
 
-const ProposalsTable = ({ proposals }) => {
+function ProposalsTable({ proposals }) {
   if (!proposals.length) return <Empty resourceName="درخواستی" />;
+
   return (
     <Table>
       <Table.Header>
@@ -22,6 +23,5 @@ const ProposalsTable = ({ proposals }) => {
       </Table.Body>
     </Table>
   );
-};
-
+}
 export default ProposalsTable;
