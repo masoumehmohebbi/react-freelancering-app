@@ -33,6 +33,7 @@ const CheckOTPForm = ({ phoneNumber, onBack, onReSendOtp, otpResponse }) => {
       }
       if (user.role === "OWNER") navigate("/owner");
       if (user.role === "FREELANCER") navigate("/freelancer");
+      if (user.role === "ADMIN") navigate("/admin");
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }

@@ -11,7 +11,7 @@ const Filter = ({ filterField, options }) => {
   return (
     <div className="flex items-center gap-x-2 text-xs">
       <span>وضعیت</span>
-      <div className="flex items-center gap-x-2 border border-secondary-100 bg-secondary-0 rounded-lg">
+      <div className="flex items-center gap-x-2 p-1 border border-secondary-100 bg-secondary-0 rounded-lg">
         {options.map(({ value, label }) => {
           const isActive = value === currentFilter;
           return (
@@ -19,7 +19,7 @@ const Filter = ({ filterField, options }) => {
               disabled={isActive}
               key={value}
               onClick={() => handleClick(value)}
-              className={`whitespace-nowrap px-4 rounded-md py-2 font-bold transition-all duration-300 ${
+              className={`whitespace-nowrap px-4 rounded-md py-1 font-bold transition-all duration-300 ${
                 isActive
                   ? "!bg-primary-900 text-secondary-0"
                   : "bg-secondary-0 text-secondary-100"
